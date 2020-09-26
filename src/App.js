@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    isToggle: true
+  }
+  handleClick = ()=> {
+    this.setState({
+      isToggle: !this.state.isToggle
+    })
+  }
+
+  render() {
+    return (
+      <div className={this.state.isToggle ? "bg-dark": "container mt-5"}>
+        <button className={this.state.isToggle ? "bg-primary text-dark":"bg-dark text-light"} onClick={this.handleClick}>{this.state.isToggle ? "ON":"OFF"}</button>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
